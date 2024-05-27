@@ -1,6 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import ListProducts from './components/ListProducts';
+import React from 'react';
 
 function App() {
   return (
