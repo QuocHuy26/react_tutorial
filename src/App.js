@@ -1,11 +1,14 @@
 import './App.css';
-import ListProducts from './components/ListProducts';
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './AppRoutes';
 
 function App() {
   return (
     <div className="App">
-      <ListProducts />
+      <BrowserRouter>
+        <AppRoutes/>
+      </BrowserRouter>
     </div>
   );
 }
