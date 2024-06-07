@@ -1,18 +1,16 @@
 import React, {useState} from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { Button, Form, Input } from "antd";
 
 const AddProduct = () => {
-    const [newName, setNewName] = useState();
-    const [newQuantity, setNewQuantity] = useState();
-    const [newPrice, setNewPrice] = useState();
     const navigate = useNavigate();
 
-    const handleAdd = async () => {
+    const handleAdd = async (values) => {
         const newProduct = {
-            name: newName,
-            quantity: newQuantity,
-            unit_price: newPrice,
+            name: values.name,
+            quantity: values.quantity,
+            unit_price: values.unit_price,
         }
         try {
             await axios.post(`http://localhost:3001/products`, newProduct)
@@ -28,50 +26,62 @@ const AddProduct = () => {
     };
 
     return (
-        <div style={{width:'840px', position: 'absolute', left: '50%', top: '40%',transform: 'translateX(-50%)',}}>
-            <div style={{width:'50%', padding: '5px',position: 'absolute', left: '50%', top: '-50%',
-                transform: 'translateX(-50%)', backgroundColor:'white', border:'1px solid black'}}>
+        <div style={{width:'420px', position: 'absolute', left: '50%', top: '50%',transform: 'translate(-50%, -50%)',
+                    padding:'10px', border:'1px solid black', borderRadius:'10px'}}>
+            <Form onFinish={handleAdd}>
                 <h1>Thêm sản phẩm</h1>
-                <p>
-                    <b>Tên: </b>
-                    <input
-                        placeholder='Nhập tên sản phẩm'
-                        onChange={(e) => {setNewName(e.target.value);}}
-                    >
-                    </input>
-                </p>
-                <p>
-                    <b>Số lượng: </b>
-                    <input
-                        placeholder='Nhập số lượng'
-                        onChange={(e) => {setNewQuantity(e.target.value);}}
-                    >
-                    </input>
-                </p>
-                <p>
-                    <b>Đơn giá: </b>
-                    <input
-                        placeholder='Nhập đơn giá'
-                        onChange={(e) => {setNewPrice(e.target.value);}}
-                    >
-                    </input>
-                </p>
+                <Form.Item
+                    label="Tên"
+                    labelAlign="left"
+                    name="name"
+                    rules={
+                        [{
+                            required: true,
+                            message: "Nhập tên sản phẩm",
+                        },]
+                    }
+                >
+                    <Input placeholder="Nhập tên sản phẩm" />
+                </Form.Item>
+                <Form.Item
+                    label="Số lượng"
+                    labelAlign="left"
+                    name="quantity"
+                    rules={
+                        [{
+                            required: true,
+                            message: "Nhập số lượng sản phẩm",
+                        },]
+                    }
+                >
+                    <Input placeholder="Nhập số lượng sản phẩm" />
+                </Form.Item>
+                <Form.Item
+                    label="Đơn giá"
+                    labelAlign="left"
+                    name="unit_price"
+                    rules={
+                        [{
+                            required: true,
+                            message: "Nhập đơn giá sản phẩm",
+                        },]
+                    }
+                >
+                    <Input placeholder="Nhập đơn giá sản phẩm" />
+                </Form.Item>
                 <div style={{display:'flex', justifyContent:'space-around'}}>
                     <Link to="/list">
-                        <button
-                            style={{padding:'5px', borderRadius:'5px', cursor: 'pointer'}}
+                        <Button
+                            style={{padding:'5px', borderRadius:'5px'}}
                         >
                             Thoát
-                        </button>
+                        </Button>
                     </Link>
-                    <button
-                        style={{padding:'5px', borderRadius:'5px', backgroundColor:'#0ff', cursor: 'pointer'}}
-                        onClick={()=>handleAdd()}
-                    >
+                    <Button type="primary" style={{padding:'5px', borderRadius:'5px'}} htmlType="submit">
                         Thêm
-                    </button>
+                    </Button>
                 </div>
-            </div>
+            </Form>
         </div>
     )
 }
