@@ -1,14 +1,14 @@
 {
   "products": [
     {
-      "name": "Bánh mỳ",
-      "quantity": "10",
-      "unit_price": "10000",
+      "name": "Bánh bông lan",
+      "quantity": "20",
+      "unit_price": "22000",
       "id": "0837"
     },
     {
       "name": "Nước ngọt",
-      "quantity": "20",
+      "quantity": "24",
       "unit_price": "16000",
       "id": "a03f"
     },
@@ -17,21 +17,20 @@
       "quantity": "25",
       "unit_price": "12000",
       "id": "2623"
-    }
-  ],
-  "comments": [
-    {
-      "id": "1",
-      "text": "a comment about post 1",
-      "postId": "1"
     },
     {
-      "id": "2",
-      "text": "another comment about post 1",
-      "postId": "1"
+      "id": "d81b",
+      "name": "new",
+      "quantity": "12",
+      "unit_price": "54000"
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "users": [
+    {
+      "email": "abc",
+      "password": "123456",
+      "token": "abc123456",
+      "id": "b80e"
+    }
+  ]
 }
