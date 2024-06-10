@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Form, Input, Button } from "antd";
+import "./style.css";
 
 const ProductDetails = () => {
     const navigate = useNavigate();
@@ -45,8 +46,7 @@ const ProductDetails = () => {
     }
 
     return (
-        <div style={{width:'420px', position: 'absolute', left: '50%', top: '50%',transform: 'translate(-50%, -50%)',
-                    padding:'10px', border:'1px solid black', borderRadius:'10px'}}>
+        <div className="product-info">
             <h1>Chi tiết</h1>
             <Form form={form} onFinish={handleUpdate}>
                 <Form.Item

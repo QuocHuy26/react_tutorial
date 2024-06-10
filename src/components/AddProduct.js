@@ -2,32 +2,32 @@ import React, {useState} from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Form, Input } from "antd";
+import "./style.css";
 
 const AddProduct = () => {
     const navigate = useNavigate();
 
-    const handleAdd = async (values) => {
+    const handleAdd = (values) => {
         const newProduct = {
             name: values.name,
             quantity: values.quantity,
             unit_price: values.unit_price,
         }
         try {
-            await axios.post(`http://localhost:3001/products`, newProduct)
+            axios.post(`http://localhost:3001/products`, newProduct)
             .then((res) =>{
                 if (res.status === 201){
                     console.log("added");
+                    navigate('/list');
                 }
             });
         } catch (error) {
             console.error('Error adding data: ', error);
         }
-        navigate('/list');
     };
 
     return (
-        <div style={{width:'420px', position: 'absolute', left: '50%', top: '50%',transform: 'translate(-50%, -50%)',
-                    padding:'10px', border:'1px solid black', borderRadius:'10px'}}>
+        <div className="product-info">
             <Form onFinish={handleAdd}>
                 <h1>Thêm sản phẩm</h1>
                 <Form.Item
