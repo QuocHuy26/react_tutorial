@@ -7,12 +7,12 @@ const PrivateRoute = (props) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (user.token === '') {
+        if (user?.token === '') {
             navigate('/');
         }
-    }, [user.token, navigate]);
+    }, [user?.token, navigate]);
     
-    if (user.token === '') {
+    if (user?.token === '') {
         return null;
     }
 
